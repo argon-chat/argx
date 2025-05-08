@@ -1,0 +1,48 @@
+{
+  "name": "@argon-chat/argx",
+  "version": "1.0.4",
+  "main": "./dist/argx.cjs",
+  "module": "./dist/argx.js",
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.16.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.13.14",
+    "@vitest/coverage-v8": "^3.0.9",
+    "camelcase": "^8.0.0",
+    "changelogen": "^0.6.1",
+    "eslint": "^9.23.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.3",
+    "vite-plugin-dts": "^4.5.3",
+    "vitest": "^3.0.9"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/argx.js",
+      "require": "./dist/argx.cjs"
+    }
+  },
+  "files": ["dist"],
+  "lint-staged": {
+    "*.ts": "bun run lint"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "release": "bun test && bun build && changelogen --release --push && bun publish",
+    "lint": "eslint . --fix",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "type": "module",
+  "types": "./dist/argx.d.ts",
+  "dependencies": {
+    "@msgpack/msgpack": "^3.1.1",
+    "@protobuf-ts/grpcweb-transport": "^2.10.0",
+    "consola": "^3.4.2"
+  }
+}
